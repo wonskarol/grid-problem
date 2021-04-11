@@ -1,6 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+import { randomInput } from "./utils/randomInput";
+import { Neighbors } from "./utils/Neighbors";
+
+const input = randomInput(4);
+const neighbors = new Neighbors(input);
+console.log(input, neighbors.getNeighbors(3, 0));
 
 function App() {
   return (
