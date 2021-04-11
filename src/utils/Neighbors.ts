@@ -13,6 +13,16 @@ export class Neighbors {
     this.neighbors = new Map<string, string[]>();
   }
 
+  public static id(x: number, y: number): string {
+    return `${x}.${y}`;
+  }
+
+  public static idSplit(id: string): [number, number] {
+    const [x, y] = id.split(".").map((number) => parseInt(number));
+
+    return [x, y];
+  }
+
   private isValidCell(x: number, y: number): boolean {
     return this.input[y][x] === 1;
   }
@@ -50,7 +60,7 @@ export class Neighbors {
       for (let x = 0; x < this.input.length; x++) {
         // create nodes only for valid cells
         if (this.isValidCell(x, y)) {
-          nodes.set(`${x}.${y}`, {
+          nodes.set(Neighbors.id(x, y), {
             x,
             y,
             visited: false,
@@ -63,13 +73,10 @@ export class Neighbors {
   }
 
   // implementation of https://en.wikipedia.org/wiki/Depth-first_search algorithm
-  private depthFirstSearch(
-    x: number,
-    y: number
-  ): Map<string, INode> | undefined {
+  private depthFirstSearch(id: string): Map<string, INode> | undefined {
     const result = new Map<string, INode>();
     const nodes = this.createNodesMap();
-    const startNode = nodes.get(`${x}.${y}`);
+    const startNode = nodes.get(id);
 
     if (startNode === undefined) {
       return;
@@ -79,7 +86,7 @@ export class Neighbors {
       node.visited = true;
       const { x, y } = node;
 
-      result.set(`${x}.${y}`, node);
+      result.set(Neighbors.id(x, y), node);
 
       const directNeighbors = this.getDirectNeighbors(nodes, x, y);
       directNeighbors.forEach((neighborNode) => {
@@ -100,15 +107,15 @@ export class Neighbors {
    * @param y position Y
    * @returns array of neighbors as `x.y` string
    */
-  public getNeighbors(x: number, y: number): string[] {
-    if (this.neighbors.has(`${x}.${y}`)) {
-      return this.neighbors.get(`${x}.${y}`) as string[];
+  public getNeighbors(id: string): string[] {
+    if (this.neighbors.has(id)) {
+      return this.neighbors.get(id) as string[];
     } else {
       console.log("=== run depthFirstSearch ===");
-      const result = this.depthFirstSearch(x, y);
+      const result = this.depthFirstSearch(id);
 
       if (result === undefined) {
-        this.neighbors.set(`${x}.${y}`, []);
+        this.neighbors.set(id, []);
         return [];
       }
 
@@ -117,7 +124,7 @@ export class Neighbors {
         this.neighbors.set(key, Array.from(result.keys()));
       });
 
-      return this.neighbors.get(`${x}.${y}`) as string[];
+      return this.neighbors.get(id) as string[];
     }
   }
 }

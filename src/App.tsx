@@ -3,16 +3,16 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import { randomInput } from "./utils/randomInput";
-import { Neighbors } from "./utils/Neighbors";
+import { Grid } from "./components/Grid";
 
-const input = randomInput(4);
-const neighbors = new Neighbors(input);
-console.log(input, neighbors.getNeighbors(3, 0));
+const size = 8;
+const input = randomInput(size);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <Grid input={input} size={size} />
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -25,7 +25,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
