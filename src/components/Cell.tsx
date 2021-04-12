@@ -3,42 +3,66 @@ import React from "react";
 interface ICellProps {
   value: number;
   id: string;
-
+  hover: boolean;
   onClick: (id: string) => void;
   onMouseEnter: (id: string) => void;
+  onMouseLeave: (id: string) => void;
+  children: React.ReactNode;
 }
 
-export const Cell: React.FC<ICellProps> = (props) => {
-  const handleClick = (id: string) => {
-    if (props.value === 1) {
-      props.onClick(id);
-    }
-  };
+function areEqual(prevProps: ICellProps, nextProps: ICellProps) {
+  if (
+    prevProps.value !== nextProps.value ||
+    prevProps.id !== nextProps.id ||
+    prevProps.hover !== nextProps.hover ||
+    prevProps.children !== nextProps.children
+  ) {
+    return false;
+  }
 
-  const handleMouseEnter = (id: string) => {
-    if (props.value === 1) {
-      props.onMouseEnter(id);
-    }
-  };
+  return true;
+}
 
-  const style = {
-    width: 50,
-    height: 50,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
-    fontWeight: 200,
-    background: props.value === 1 ? "tomato" : "white",
-  };
+export const Cell = React.memo(
+  ({ value, id, hover, children, onClick, onMouseEnter, onMouseLeave }) => {
+    const handleClick = (id: string) => {
+      if (value === 1) {
+        onClick(id);
+      }
+    };
 
-  return (
-    <div
-      style={style}
-      onClick={() => handleClick(props.id)}
-      onMouseEnter={() => handleMouseEnter(props.id)}
-    >
-      {props.children}
-    </div>
-  );
-};
+    const handleMouseEnter = (id: string) => {
+      if (value === 1) {
+        onMouseEnter(id);
+      }
+    };
+
+    const handleMouseLeave = (id: string) => {
+      if (value === 1) {
+        onMouseLeave(id);
+      }
+    };
+
+    const style = {
+      width: 50,
+      height: 50,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      color: "white",
+      background: hover ? "seagreen" : value === 1 ? "tomato" : "white",
+    };
+
+    return (
+      <div
+        style={style}
+        onClick={() => handleClick(id)}
+        onMouseEnter={() => handleMouseEnter(id)}
+        onMouseLeave={() => handleMouseLeave(id)}
+      >
+        {children}
+      </div>
+    );
+  },
+  areEqual
+);

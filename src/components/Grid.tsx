@@ -11,10 +11,12 @@ interface IGridProps {
 export function Grid({ input, size }: IGridProps) {
   const neighbors = useRef<Neighbors>();
   const [cellCount, setCellCount] = useState<{ id: string; count: number }>();
+  const [cellHover, setCellHover] = useState<string[]>([]);
 
   useEffect(() => {
     neighbors.current = new Neighbors(input);
     setCellCount(undefined);
+    setCellHover([]);
   }, [input]);
 
   const handleOnCellClick = (id: string) => {
@@ -25,8 +27,18 @@ export function Grid({ input, size }: IGridProps) {
     }
   };
 
-  const handleOnCellMouseOver = (id: string) => {
-    console.log(id);
+  const handleOnCellMouseEnter = (id: string) => {
+    console.log("enter", id);
+    const cells = neighbors.current?.getNeighbors(id);
+
+    if (cells) {
+      setCellHover(cells);
+    }
+  };
+
+  const handleOnCellMouseLeave = (id: string) => {
+    console.log("leave", id);
+    setCellHover([]);
   };
 
   const styles = {
@@ -44,8 +56,10 @@ export function Grid({ input, size }: IGridProps) {
             key={Neighbors.id(x, y)}
             id={Neighbors.id(x, y)}
             value={input[y][x]}
+            hover={cellHover?.includes(Neighbors.id(x, y))}
             onClick={handleOnCellClick}
-            onMouseEnter={handleOnCellMouseOver}
+            onMouseEnter={handleOnCellMouseEnter}
+            onMouseLeave={handleOnCellMouseLeave}
           >
             {Neighbors.id(x, y) === cellCount?.id && cellCount?.count}
           </Cell>
