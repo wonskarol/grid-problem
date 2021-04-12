@@ -73,20 +73,20 @@ export class Neighbors {
   }
 
   // implementation of https://en.wikipedia.org/wiki/Depth-first_search algorithm
-  private depthFirstSearch(id: string): Map<string, INode> | undefined {
-    const result = new Map<string, INode>();
+  private depthFirstSearch(id: string): string[] {
+    const result: string[] = [];
     const nodes = this.createNodesMap();
     const startNode = nodes.get(id);
 
     if (startNode === undefined) {
-      return;
+      return [];
     }
 
     const visitNodes = (node: INode) => {
       node.visited = true;
       const { x, y } = node;
 
-      result.set(Neighbors.id(x, y), node);
+      result.push(Neighbors.id(x, y));
 
       const directNeighbors = this.getDirectNeighbors(nodes, x, y);
       directNeighbors.forEach((neighborNode) => {
@@ -113,14 +113,13 @@ export class Neighbors {
       console.log("=== run depthFirstSearch ===");
       const result = this.depthFirstSearch(id);
 
-      if (result === undefined) {
+      if (result.length === 0) {
         this.neighbors.set(id, []);
-        return [];
       }
 
       // memoization
-      result.forEach((_, key) => {
-        this.neighbors.set(key, Array.from(result.keys()));
+      result.forEach((id) => {
+        this.neighbors.set(id, [...result]);
       });
 
       return this.neighbors.get(id) as string[];
