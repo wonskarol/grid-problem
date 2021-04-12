@@ -103,9 +103,8 @@ export class Neighbors {
 
   /**
    *
-   * @param x position X
-   * @param y position Y
-   * @returns array of neighbors as `x.y` string
+   * @param id cell position as `x.y` string
+   * @returns array of all cell neighbors (including cell itself) as `x.y` string
    */
   public getNeighbors(id: string): string[] {
     if (this.neighbors.has(id)) {
