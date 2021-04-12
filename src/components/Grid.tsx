@@ -28,7 +28,6 @@ export function Grid({ input, size }: IGridProps) {
   };
 
   const handleOnCellMouseEnter = (id: string) => {
-    console.log("enter", id);
     const cells = neighbors.current?.getNeighbors(id);
 
     if (cells) {
@@ -37,7 +36,6 @@ export function Grid({ input, size }: IGridProps) {
   };
 
   const handleOnCellMouseLeave = (id: string) => {
-    console.log("leave", id);
     setCellHover([]);
   };
 
