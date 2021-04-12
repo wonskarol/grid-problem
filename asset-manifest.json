@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/grid-problem/static/css/main.c3c4d338.chunk.css",
-    "main.js": "/grid-problem/static/js/main.64045e3c.chunk.js",
-    "main.js.map": "/grid-problem/static/js/main.64045e3c.chunk.js.map",
+    "main.js": "/grid-problem/static/js/main.f254ee95.chunk.js",
+    "main.js.map": "/grid-problem/static/js/main.f254ee95.chunk.js.map",
     "runtime-main.js": "/grid-problem/static/js/runtime-main.7033a217.js",
     "runtime-main.js.map": "/grid-problem/static/js/runtime-main.7033a217.js.map",
     "static/js/2.e21dc25b.chunk.js": "/grid-problem/static/js/2.e21dc25b.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.7033a217.js",
     "static/js/2.e21dc25b.chunk.js",
     "static/css/main.c3c4d338.chunk.css",
-    "static/js/main.64045e3c.chunk.js"
+    "static/js/main.f254ee95.chunk.js"
   ]
 }
