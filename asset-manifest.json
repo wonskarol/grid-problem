@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/grid-problem/static/css/main.c3c4d338.chunk.css",
+    "main.js": "/grid-problem/static/js/main.64045e3c.chunk.js",
+    "main.js.map": "/grid-problem/static/js/main.64045e3c.chunk.js.map",
+    "runtime-main.js": "/grid-problem/static/js/runtime-main.7033a217.js",
+    "runtime-main.js.map": "/grid-problem/static/js/runtime-main.7033a217.js.map",
+    "static/js/2.e21dc25b.chunk.js": "/grid-problem/static/js/2.e21dc25b.chunk.js",
+    "static/js/2.e21dc25b.chunk.js.map": "/grid-problem/static/js/2.e21dc25b.chunk.js.map",
+    "static/js/3.50e4f49e.chunk.js": "/grid-problem/static/js/3.50e4f49e.chunk.js",
+    "static/js/3.50e4f49e.chunk.js.map": "/grid-problem/static/js/3.50e4f49e.chunk.js.map",
+    "index.html": "/grid-problem/index.html",
+    "static/css/main.c3c4d338.chunk.css.map": "/grid-problem/static/css/main.c3c4d338.chunk.css.map",
+    "static/js/2.e21dc25b.chunk.js.LICENSE.txt": "/grid-problem/static/js/2.e21dc25b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7033a217.js",
+    "static/js/2.e21dc25b.chunk.js",
+    "static/css/main.c3c4d338.chunk.css",
+    "static/js/main.64045e3c.chunk.js"
+  ]
+}
