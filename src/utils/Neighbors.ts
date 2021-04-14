@@ -106,11 +106,10 @@ export class Neighbors {
    * @param id cell position as `x.y` string
    * @returns array of all cell neighbors (including cell itself) as `x.y` string
    */
-  public getNeighbors(id: string): string[] {
+  public get(id: string): string[] {
     if (this.neighbors.has(id)) {
       return this.neighbors.get(id) as string[];
     } else {
-      console.log("=== run depthFirstSearch ===");
       const result = this.depthFirstSearch(id);
 
       if (result.length === 0) {

@@ -20,7 +20,7 @@ export function Grid({ input, size }: IGridProps) {
   }, [input]);
 
   const handleOnCellClick = (id: string) => {
-    const length = neighbors.current?.getNeighbors(id).length;
+    const length = neighbors.current?.get(id).length;
 
     if (length) {
       setCellCount({ id, count: length });
@@ -28,14 +28,14 @@ export function Grid({ input, size }: IGridProps) {
   };
 
   const handleOnCellMouseEnter = (id: string) => {
-    const cells = neighbors.current?.getNeighbors(id);
+    const cells = neighbors.current?.get(id);
 
     if (cells) {
       setCellHover(cells);
     }
   };
 
-  const handleOnCellMouseLeave = (id: string) => {
+  const handleOnCellMouseLeave = () => {
     setCellHover([]);
   };
 
