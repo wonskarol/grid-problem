@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# grid-problem
+
+## Problem
+
+Create an app that renders a grid of empty and filled cells and allows you to count the number of connected filled cells on click.
+
+- Cells are connected if they are touching horizontally or vertically (not diagonal).
+- While hovering over a filled cell, temporarily change the colour of all connected cells.
+
+## Solution
+
+To find connected cells I used [Depth first search](https://en.wikipedia.org/wiki/Depth-first_search) algorithm. For performance reasons I also used memoization, both on algorithm (`Neighbors.get()`) and component (`Cell`) side.
+
+## Demo
+
+To check solution click [here](https://wonskarol.github.io/grid-problem/).
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
